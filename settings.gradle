@@ -1,3 +1,5 @@
+rootProject.name = 'LodestarWorkspace'
+
 if (file('Lodestone').exists()) {
     include 'Lodestone'
 }
