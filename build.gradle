@@ -9,7 +9,7 @@ subprojects {
         if (it.name.startsWith("_")) {
             // You must exclude the same modules you substitute here, because ForgeGradle
             if (lodestonePresent) {
-                exclude group: "team.lodestar.lodestone", module: "Lodestone"
+                exclude group: "team.lodestar.lodestone", module: "lodestone"
             }
             return
         }
@@ -17,7 +17,7 @@ subprojects {
         resolutionStrategy.dependencySubstitution {
             // Apply substitutions for modules your projects depend on, replacing them with another project
             if (lodestonePresent) {
-                substitute module("team.lodestar.lodestone:Lodestone") using project(":Lodestone")
+                substitute module("team.lodestar.lodestone:lodestone") using project(":Lodestone")
             }
         }
     }
