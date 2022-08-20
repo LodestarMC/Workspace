@@ -2,17 +2,23 @@ plugins {
     id("org.jetbrains.gradle.plugin.idea-ext") version "1.1"
 }
 
+boolean lodestonePresent = findProject("Lodestone") != null
+
 subprojects {
     configurations.all {
         if (it.name.startsWith("_")) {
             // You must exclude the same modules you substitute here, because ForgeGradle
-            exclude group: "team.lodestar.lodestone", module: "Lodestone"
+            if (lodestonePresent) {
+                exclude group: "team.lodestar.lodestone", module: "Lodestone"
+            }
             return
         }
 
         resolutionStrategy.dependencySubstitution {
             // Apply substitutions for modules your projects depend on, replacing them with another project
-            substitute module("team.lodestar.lodestone:Lodestone") using project(":Lodestone")
+            if (lodestonePresent) {
+                substitute module("team.lodestar.lodestone:Lodestone") using project(":Lodestone")
+            }
         }
     }
 }
