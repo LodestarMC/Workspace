@@ -28,15 +28,13 @@ project('runenv') {
         mcversion = project.minecraftVersion
         forgeversion = project.forgeVersion
         // javaversion = 17 // Defaults to 17 already
-//        mappings channel: 'parchment', version: "${parchmentVersion}-${minecraftVersion}"
+        // mappings channel: 'parchment', version: "${parchmentVersion}-${minecraftVersion}"
         // runArgs = [ ] // Arguments applied to all runs
         // runProps = [ name: value ] // Properties applied to all runs
     }
     repositories {
         // Repositories for additional runtime dependencies go here
-//        maven { url = 'https://maven.parchmentmc.org' }
     }
-//    apply plugin: 'org.parchmentmc.librarian.forgegradle'
     afterEvaluate {
         dependencies {
             // This is where any additional runtime dependencies for your dev environment go
