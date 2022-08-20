@@ -1,3 +1,44 @@
-if (findProject(':Lodestone') != null) {
-    project(":Fundamental-Forces").evaluationDependsOn(":Lodestone")
+plugins {
+    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1"
+}
+
+subprojects {
+    configurations.all {
+        if (it.name.startsWith("_")) {
+            // You must exclude the same modules you substitute here, because ForgeGradle
+            exclude group: "team.lodestar.lodestone", module: "Lodestone"
+            return
+        }
+
+        resolutionStrategy.dependencySubstitution {
+            // Apply substitutions for modules your projects depend on, replacing them with another project
+            substitute module("team.lodestar.lodestone:Lodestone") using project(":Lodestone")
+        }
+    }
+}
+
+project('runenv') {
+    ext {
+        mcversion = project.minecraftVersion
+        forgeversion = project.forgeVersion
+        // javaversion = 17 // Defaults to 17 already
+//        mappings channel: 'parchment', version: "${parchmentVersion}-${minecraftVersion}"
+        // runArgs = [ ] // Arguments applied to all runs
+        // runProps = [ name: value ] // Properties applied to all runs
+    }
+    repositories {
+        // Repositories for additional runtime dependencies go here
+//        maven { url = 'https://maven.parchmentmc.org' }
+    }
+//    apply plugin: 'org.parchmentmc.librarian.forgegradle'
+    afterEvaluate {
+        dependencies {
+            // This is where any additional runtime dependencies for your dev environment go
+        }
+    }
+}
+
+// Ensure the run directory is excluded from the idea module
+idea.module {
+    excludeDirs << file("run")
 }

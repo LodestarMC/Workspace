@@ -6,3 +6,6 @@ if (file('Lodestone').exists()) {
 if (file('Fundamental-Forces').exists()) {
     include 'Fundamental-Forces'
 }
+
+// This will always be loaded for making multiproject runs
+include 'runenv'
