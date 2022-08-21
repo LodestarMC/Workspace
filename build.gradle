@@ -20,7 +20,7 @@ subprojects {
                 substitute module("team.lodestar.lodestone:lodestone") using project(":Lodestone")
             }
         }
-        resolutionStrategy.force("curse.maven:farmers_delight-398521:3739914_mapped_official_1.18.2")
+        // resolutionStrategy.force("curse.maven:farmers_delight-398521:3739914_mapped_official_1.18.2")
     }
 }
 
@@ -33,9 +33,9 @@ project('runenv') {
         // runArgs = [ ] // Arguments applied to all runs
         // runProps = [ name: value ] // Properties applied to all runs
     }
-    configurations.all {
-        resolutionStrategy.force("net.minecraftforge:forge:${project.minecraftVersion}-${project.forgeVersion}")
-    }
+    // configurations.all {
+    //     resolutionStrategy.force("net.minecraftforge:forge:${project.minecraftVersion}-${project.forgeVersion}")
+    // }
     repositories {
         // Repositories for additional runtime dependencies go here
     }

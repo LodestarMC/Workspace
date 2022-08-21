@@ -9,6 +9,9 @@ if (file('Fundamental-Forces').exists()) {
 if (file('Malum-Mod').exists()) {
     include 'Malum-Mod'
 }
+if (file('Embers').exists()) {
+    include 'Embers'
+}
 
 // This will always be loaded for making multiproject runs
 include 'runenv'
